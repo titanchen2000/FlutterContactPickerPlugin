@@ -1,4 +1,4 @@
-group = "dev.xp.contact_picker"
+group = "dev.xp.free_contact_picker"
 version = "1.0-SNAPSHOT"
 
 buildscript {
@@ -25,7 +25,7 @@ apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
 
 android {
-    namespace = "dev.xp.contact_picker"
+    namespace = "dev.xp.free_contact_picker"
 
     compileSdk = 36
 

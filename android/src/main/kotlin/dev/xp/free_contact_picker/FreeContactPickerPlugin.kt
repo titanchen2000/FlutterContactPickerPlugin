@@ -1,4 +1,4 @@
-package dev.xp.contact_picker
+package dev.xp.free_contact_picker
 
 import android.app.Activity
 import android.content.ContentResolver
@@ -20,14 +20,14 @@ import kotlin.io.use
 import kotlin.let
 import kotlin.to
 
-class ContactPickerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
+class FreeContactPickerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     private lateinit var channel: MethodChannel
     private lateinit var contactPickResult: Result
     private var launcher: ActivityResultLauncher<Intent>? = null
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "contact_picker")
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "free_contact_picker")
         channel.setMethodCallHandler(this)
     }
 

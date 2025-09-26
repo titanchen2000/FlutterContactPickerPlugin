@@ -1,24 +1,26 @@
-# contact_picker
+# free_contact_picker
 
-Flutter plugin for pick contact on Android without any permission.
+Flutter plugin for pick contact on Android/iOS without any permission.
 With this plugin a Flutter app can ask its user to select a contact from his/her address book. The information associated with the contact is returned to the app.
 
 ## Example
 
 ```
-            ContactPicker().pickContact((contact) {
-              print('name: ${contact['name']}');
-              print('phone: ${contact['phone']}');
-            });
+    import 'package:free_contact_picker/free_contact_picker.dart';
+
+    FreeContactPicker().pickContact((contact) {
+      print('name: ${contact['name']}');
+      print('phone: ${contact['phone']}');
+    });
 ```
 
 or with error handler
 
 ```
-            ContactPicker().pickContact((contact) {
-              print('name: ${contact['name']}');
-              print('phone: ${contact['phone']}');
-            }, onError: (msg) => print(msg));
+    FreeContactPicker().pickContact((contact) {
+      print('name: ${contact['name']}');
+      print('phone: ${contact['phone']}');
+    }, onError: (msg) => print(msg));
 ```
 
 ## Getting Started

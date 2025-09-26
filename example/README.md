@@ -1,6 +1,6 @@
-# contact_picker_example
+# free_contact_picker_example
 
-Demonstrates how to use the contact_picker plugin.
+Demonstrates how to use the free_contact_picker plugin.
 
 ## Getting Started
 

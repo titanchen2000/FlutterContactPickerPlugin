@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.xp.contact_picker_example"
+    namespace = "dev.xp.free_contact_picker_example"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "dev.xp.contact_picker_example"
+        applicationId = "dev.xp.free_contact_picker_example"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

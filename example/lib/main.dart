@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:free_contact_picker/contact_picker.dart';
+import 'package:free_contact_picker/free_contact_picker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,13 +14,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _contactPickerPlugin = ContactPicker();
+  final _contactPickerPlugin = FreeContactPicker();
   String _contactName = '';
   String _contactPhone = '';
 
   void pickContact() {
     _contactPickerPlugin.pickContact(
-      (contact) {
+          (contact) {
         setState(() {
           _contactName = contact['name'];
           _contactPhone = contact['phone'];
