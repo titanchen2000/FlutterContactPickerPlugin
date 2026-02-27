@@ -23,7 +23,7 @@ import kotlin.to
 class FreeContactPickerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     private lateinit var channel: MethodChannel
-    private lateinit var contactPickResult: Result
+    private var contactPickResult: Result? = null
     private var launcher: ActivityResultLauncher<Intent>? = null
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
@@ -64,15 +64,15 @@ class FreeContactPickerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
                 val data: Intent? = result.data
                 data?.data?.let { uri ->
                     val contactInfo = getContactInfo(binding.activity.contentResolver, uri)
-                    contactPickResult.success(
+                    contactPickResult?.success(
                         mapOf(
                             "name" to contactInfo.first,
                             "phone" to contactInfo.second
                         )
                     )
-                } ?: contactPickResult.error("PICK_CONTACT_FAILED", "Unknown error", null)
+                } ?: contactPickResult?.error("PICK_CONTACT_FAILED", "Unknown error", null)
             } else {
-                contactPickResult.error("PICK_CONTACT_FAILED", "User canceled", null)
+                contactPickResult?.error("PICK_CONTACT_FAILED", "User canceled", null)
             }
             contactPickResult = null
         }
