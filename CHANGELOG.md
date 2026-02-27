@@ -1,3 +1,6 @@
+## 1.0.1
+* fix android crash.
+
 ##  1.0.0
 * add ios
 

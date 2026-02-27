@@ -74,6 +74,7 @@ class FreeContactPickerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
             } else {
                 contactPickResult.error("PICK_CONTACT_FAILED", "User canceled", null)
             }
+            contactPickResult = null
         }
     }
 
@@ -90,27 +91,31 @@ class FreeContactPickerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
         var name = ""
         var phoneNo = ""
 
-        resolver.query(
-            uri,
-            arrayOf(
-                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-                ContactsContract.CommonDataKinds.Phone.NUMBER
-            ),
-            null,
-            null,
-            null
-        )?.use { cursor ->
-            if (cursor.moveToFirst()) {
-                val nameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
-                if (nameIndex != -1) {
-                    name = cursor.getString(nameIndex) ?: ""
-                }
+        try {
+            resolver.query(
+                uri,
+                arrayOf(
+                    ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                    ContactsContract.CommonDataKinds.Phone.NUMBER
+                ),
+                null,
+                null,
+                null
+            )?.use { cursor ->
+                if (cursor.moveToFirst()) {
+                    val nameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+                    if (nameIndex != -1) {
+                        name = cursor.getString(nameIndex) ?: ""
+                    }
 
-                val phoneIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                if (phoneIndex != -1) {
-                    phoneNo = cursor.getString(phoneIndex) ?: ""
+                    val phoneIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                    if (phoneIndex != -1) {
+                        phoneNo = cursor.getString(phoneIndex) ?: ""
+                    }
                 }
             }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
 
         return Pair(name, phoneNo)
