@@ -13,7 +13,7 @@ flutter pub add free_contact_picker
 Or Add the following line to your `pubspec.yaml` file (and run an implicit ```flutter pub get```)
 ```yaml
 dependencies:
-  free_contact_picker: ^1.0.1
+  free_contact_picker: ^1.0.2
 ```
 
 ## Example
