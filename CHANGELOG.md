@@ -1,3 +1,6 @@
+## 1.0.3
+* fix android no contact provider found error.
+
 ## 1.0.2
 * fix android crash.
 

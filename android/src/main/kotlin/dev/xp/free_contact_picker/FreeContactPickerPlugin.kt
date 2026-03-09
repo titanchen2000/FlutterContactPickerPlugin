@@ -41,10 +41,15 @@ class FreeContactPickerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
                 return
             }
             contactPickResult = result
-            Intent(Intent.ACTION_PICK).apply {
-                type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
-            }.also {
-                launcher?.launch(it)
+            try {
+                Intent(Intent.ACTION_PICK).apply {
+                    type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
+                }.also {
+                    launcher?.launch(it)
+                }
+            } catch (e: Exception) {
+                contactPickResult?.error("PICK_CONTACT_FAILED", "No contact provider found", null)
+                contactPickResult = null
             }
         } else {
             result.notImplemented()
